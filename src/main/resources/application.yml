@@ -1,0 +1,9 @@
+spring:
+  datasource:
+    driver-class-name: org.hsqldb.jdbc.JDBCDriver
+    url: jdbc:hsqldb:hsql://localhost/testdb
+    username: sa
+    password:
+    jpa:
+      hibernate:
+        ddl-auto: create-drop

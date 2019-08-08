@@ -1,0 +1,53 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:2.1.6.RELEASE")
+    }
+}
+
+
+repositories {
+    mavenCentral()
+}
+
+apply plugin: 'java'
+apply plugin: 'groovy'
+apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
+
+group 'com.coding'
+version '1.0'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+dependencies {
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter', version: '2.1.6.RELEASE'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version: '2.1.6.RELEASE'
+    compile group: 'org.projectlombok', name: 'lombok', version: '1.18.8'
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.9.9.2'
+    compile group: 'org.hsqldb', name: 'hsqldb', version: '2.5.0'
+
+
+    testCompile "org.codehaus.groovy:groovy-all:2.4.15"
+    testCompile "org.spockframework:spock-core:1.2-groovy-2.4"
+    annotationProcessor group: 'org.projectlombok', name: 'lombok', version: '1.18.8'
+}
+
+sourceSets {
+    test.groovy.srcDirs(
+            "src/test/unit"
+    )
+}
+
+idea {
+    module {
+        test
+    }
+}
+
+bootRun {
+    standardInput = System.in
+}
